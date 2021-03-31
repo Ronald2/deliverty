@@ -11,12 +11,14 @@ namespace Infrastructure.Data
 {
     public class StoreContextSeed
     {
-        public static async Task SeedAsync(StoreContext context, ILoggerFactory loggerFactory){
+        public static async Task SeedAsync(StoreContext context, ILoggerFactory loggerFactory)
+        {
             try
             {
                 string path = "../Infrastructure/Data/SeedData";
 
-                if(!context.ProductBrands.Any()){
+                if (!context.ProductBrands.Any())
+                {
                     var brandsData = File.ReadAllText($"{path}/brands.json");
                     var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
 
@@ -34,7 +36,7 @@ namespace Infrastructure.Data
 
                     foreach (var item in data)
                     {
-                        context.ProductTypes.Add(item);;
+                        context.ProductTypes.Add(item); ;
                     }
                     await context.SaveChangesAsync();
                 }
