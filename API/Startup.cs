@@ -1,4 +1,5 @@
 using API.Extension;
+using API.Helpers;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,7 @@ namespace API
         {
 
             services.AddControllers();
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddApplicationServices();
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddSwaggerGen(c =>
@@ -44,6 +46,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
