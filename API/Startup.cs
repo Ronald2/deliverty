@@ -32,8 +32,12 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
             services.AddCors(opt =>
-                opt.AddDefaultPolicy(p =>
-                    p.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200")));
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
