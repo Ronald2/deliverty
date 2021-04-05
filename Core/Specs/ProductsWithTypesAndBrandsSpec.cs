@@ -6,7 +6,8 @@ namespace Core.Specs
     {
         public ProductsWithTypesAndBrandsSpec(ProductSpecParams productParam)
         : base(p =>
-       (!productParam.BrandId.HasValue || p.ProductBrandId == productParam.BrandId) &&
+       (string.IsNullOrEmpty(productParam.Search) || p.Name.ToLower().Contains(productParam.Search))&&
+        (!productParam.BrandId.HasValue || p.ProductBrandId == productParam.BrandId) &&
        (!productParam.TypeId.HasValue || p.ProductTypeId == productParam.TypeId))
         {
             AddIncludes(p => p.ProductBrand);
