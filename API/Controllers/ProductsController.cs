@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
 using AutoMapper;
@@ -28,9 +27,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProductsAsync(int? typeId, int? brandId, string sort)
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProductsAsync([FromQuery] ProductSpecParams productParams)
         {
-            var spec = new ProductsWithTypesAndBrandsSpec(typeId, brandId, sort);
+            var spec = new ProductsWithTypesAndBrandsSpec(productParams);
             var products = await _productRepo.ListWithSpecAsync(spec);
             return Ok(_mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductDto>>(products));
         }
