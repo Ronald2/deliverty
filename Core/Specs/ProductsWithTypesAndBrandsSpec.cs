@@ -6,7 +6,7 @@ namespace Core.Specs
     {
         public ProductsWithTypesAndBrandsSpec(ProductSpecParams productParam)
         : base(p =>
-       (string.IsNullOrEmpty(productParam.Search) || p.Name.ToLower().Contains(productParam.Search))&&
+       (string.IsNullOrEmpty(productParam.Search) || p.Name.ToLower().Contains(productParam.Search)) &&
         (!productParam.BrandId.HasValue || p.ProductBrandId == productParam.BrandId) &&
        (!productParam.TypeId.HasValue || p.ProductTypeId == productParam.TypeId))
         {

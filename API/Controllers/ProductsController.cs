@@ -34,8 +34,8 @@ namespace API.Controllers
             var countSpec = new ProductWithFiltersForCountSpec(productParams);
             var totalItems = await _productRepo.CountAsync(countSpec);
             var products = await _productRepo.ListWithSpecAsync(spec);
-            var data = _mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductDto>>(products);
-            return Ok(new Pagination<ProductDto>(productParams.PageIndex,productParams.PageSize, totalItems, data));
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products);
+            return Ok(new Pagination<ProductDto>(productParams.PageIndex, productParams.PageSize, totalItems, data));
         }
 
         [HttpGet("{id}")]
@@ -43,7 +43,7 @@ namespace API.Controllers
         {
             var spec = new ProductsWithTypesAndBrandsSpec(id);
             var product = await _productRepo.GetEntityWithSpecAsync(spec);
-            return _mapper.Map<Product,ProductDto>(product);
+            return _mapper.Map<Product, ProductDto>(product);
         }
 
         [HttpGet("brands")]

@@ -44,10 +44,11 @@ namespace Core.Specs
             OrderByDescending = orderByDescExpression;
         }
 
-        protected void ApplyPaging(int skip, int take){
+        protected void ApplyPaging(int skip, int take)
+        {
             Take = take;
             Skip = skip;
-            IsPagingEnabled =true;
+            IsPagingEnabled = true;
         }
     }
 }

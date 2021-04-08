@@ -6,8 +6,9 @@ namespace API.Controllers
     [Route("/errors/{code}")]
     public class ErrorController : BaseApiController
     {
-        public IActionResult GetStatusResponse(int code){
-            return new ObjectResult( new ApiResponse(code));
+        public IActionResult GetStatusResponse(int code)
+        {
+            return new ObjectResult(new ApiResponse(code));
         }
     }
 }

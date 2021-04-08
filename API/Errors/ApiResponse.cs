@@ -14,7 +14,8 @@ namespace API.Errors
         public string Message { get; }
         private string GetStatusCodeDefaultMessage(int statusCode)
         {
-            return StatusCode switch{
+            return StatusCode switch
+            {
                 400 => "Bad Request, you have made.",
                 401 => "Authorized, you are not.",
                 404 => "Resource found, it was not.",
